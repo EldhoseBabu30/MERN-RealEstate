@@ -17,8 +17,8 @@ const userSchema = new mongoose.Schema({
     },
     avatar:{
         type: String,
-        default:"https://img.freepik.com/premium-vector/man-avatar-profile-picture-vector-illustration_268834-538.jpg"
-    }
+        default:"https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
+    },
 
 },{timestamps:true}); 
 
