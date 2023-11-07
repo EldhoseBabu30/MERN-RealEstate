@@ -69,7 +69,7 @@ export default function SignIn() {
         </form>
         <div className="flex gap-2 mt-5">
           <div className='flex gap-2 mt-5'>
-            <p>Dont h ave an account?</p>
+            <p>Dont have an account?</p>
 
               <Link to={'/sign-up'}>
                 <span className='text-blue-700'>Sign Up</span>
