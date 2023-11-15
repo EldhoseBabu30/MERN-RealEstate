@@ -3,12 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import {getDownloadURL, getStorage, ref, uploadBytesResumable} from 'firebase/storage'
 import { app } from '../firebase';
 import { deleteUserFailure, deleteUserStart, deleteUserSuccess, signOutUserStart, updateUserFailure, updateUserStart, updateUserSuccess } from '../redux/user/UserSlice'; 
-
-
-
-
-
-
+import { Link } from 'react-router-dom';
 
 export default function Profile() {
  
@@ -98,21 +93,18 @@ export default function Profile() {
   }
   const handleSignOut = async () => {
     try {
-      dispatch(signOutUserStart())
-      const res = await fetch('api/auth/signout');
+      dispatch(signOutUserStart());
+      const res = await fetch('/api/auth/signout');
       const data = await res.json();
-      if(data.success === false){
-        dispatch(deleteUserFailure(data.message))
+      if (data.success === false) {
+        dispatch(deleteUserFailure(data.message));
         return;
       }
-      dispatch(deleteUserSuccess(data))
-      
+      dispatch(deleteUserSuccess(data));
     } catch (error) {
-      dispatch(deleteUserFailure(data.message))
-
+      dispatch(deleteUserFailure(data.message));
     }
-
-  }
+  };
 
   
   return (
@@ -137,6 +129,9 @@ export default function Profile() {
       <input type="email" onChange={handleChange} defaultValue={currentUser.email} placeholder='email' className='border p-3 rounded-lg' id='email' />
       <input type="password" onChange={handleChange} defaultValue={currentUser.password} placeholder='password' className='border p-3 rounded-lg' id='password' />
       <button disabled={loading} className='bg-slate-700 text-white rounded-lg p-3 uppercase hover:opacity-95 disabled:opacity-80 '> {loading ? 'Loading...' : 'Update'}</button>
+      <Link className='bg-green-700 text-white p-3 rounded-lg uppercase text-center hover:opacity-95 ' to={'/create-listing'}>
+        Create Listing
+      </Link>
    
 
     </form>
